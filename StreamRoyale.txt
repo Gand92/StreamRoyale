@@ -1,0 +1,89 @@
+
+
+<<<<<<<<<<<<<<------------------------------------------------STREAM ROYALE---------------------------------------------->>>>>>>>>>>
+
+---------GAMEPLAY---------
+
+-Creazione delle stanze
+	La grandezza e il numero delle stanze dipende dal numero di viewers che raggiunge il canale e a chi fa join (potremmo anche fare che chiunque sia in chat
+	inizi a partecipare automaticamente ad una battaglia anche senza fare join). 
+	Per questo motivo è meglio implementarle in modo tale da rendere il più semplice possibile la modifica di tali parametri.
+	Viewers			|	0-50	|	50-100	|	100-300	|
+	Limite stanza	|	50		|	100		|	100		|   ---> Da decidere se meglio stanze da 50 o da 100.
+	Min giocatori	|   2		|	50+35	|	50		|
+	Numero stanze	|	1		|	1-2		|	3-6		|
+
+	L'idea è che se ci sono meno di 50 persone a joinare allora bisogna essere in almeno 2 persone (almeno inizialmente)
+	Se ci sono invece già stanze in gioco, si prende la stanza con il maggior numero di utenti e la si prende come riferimento per creare la soglia minima
+		per la prossima stanza da creare. Esempio: se in gioco c'è una stanza da 50 piena allora la prossima deve avere come minimo 35-40 giocatori per non
+		rendere il gioco troppo in favore di chi joina le stanze piccole.
+	
+	NB: ricordarsi di escludere eventuali bot
+
+-Gestione della stanza / Instanza di una run
+	Il gioco consiste in una battle royale tra i membri che hanno joinato una stanza
+	-Inizio
+		Tutti i partecipanti della stanza lootano qualcosa all'inizio della run.
+			1-2 armi + munizioni da definire
+			0-1 utility item  ???
+	-Svolgimento
+		-Partecipanti
+		Ogni intervallo di tempo da definire vengono estratti random due giocatori ed iniziano uno scontro/clash
+		-Luogo
+		Viene scelta in modo randomica una distanza alla quale il clash avviene
+			Corto Raggio	|	
+			Medio Raggio	|	Ogni arma ha una percentuale di successo in base alla distanza in cui avviene il clash
+			Lungo Raggio	|
+		-Durata
+		Durata è da definire. Partiamo con 5 round massimi, quanti di questi round possono essere giocati dipende dalla tipologia di arma equipaggiata
+		-Fine scontro
+		Alla fine dell'ultimo round se uno dei due contendenti muore passa tutto il suo loot all'avversario (munizioni comprese), ovviamente solo le armi
+			migliori di quelle già in possesso dal vincitore verranno lootate.
+		I partecipanti che sopravvivono al clash utilizzano in automatico un certo tipo di utility item per curarsi ad esempio (ovviamente viene scelto quelli
+			più consono al tipo di danno ricevuto)
+		
+	-Fine
+		Viene mostrato il vincitore, statistiche di partita e rewards
+
+-Weapon
+	-Caratteristiche armi
+		-Nome
+		-Livello
+		-Danno (per lo shotgun potrebbe cambiare in base alla distanza in quanto solo alcuni pallettoni potrebbero colpire)
+		-Percentuali di precisione per distanza 
+		-Numero di munizioni
+	-Lista armi
+
+-Utility Item
+	-Cure
+		-Nome
+		-Ammontare della cura
+	-Modificatori di precisione/evasione --->da vedere come implementarlo, richiederebbe l'intervento realtime del giocatore
+	-Scappa dallo scontro e loota qualcosa ????   idem come sopra
+
+-Loot System
+	-Inizio
+		Primo loot all'inzio della partita
+	-Durante
+		Vedere come gestire un possibile loot durante la run
+
+-Rewards
+	-Emotes
+
+-Subs rewards
+	Weapon Skins
+	Character Skins
+
+-Hall of Fame
+	Daily
+	Weekly
+	Monthly
+	All the time
+
+-Comandi chat
+	-!join: da decidere se mettere join automatico oppure no
+	-!"weapon_name": mostra i dettagli dell'arma in tutti i suoi livelli
+	-!daily/weekly/monthly/total wins: mostra il numreo di vittorie ottenute
+
+	-------User Interface-------
+
