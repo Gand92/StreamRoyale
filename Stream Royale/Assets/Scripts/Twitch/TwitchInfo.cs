@@ -9,6 +9,7 @@ public class TwitchInfo {
 
     public TwitchInfo()
     {
+        //TODO Adjust the setup for both Desktop and Laptop folder path
         StreamReader sr = new StreamReader("D:/Unity_Projects/InfoTwitch/InfoTwitch.txt");
         for (int i = 0; i < 4; ++i)
         {

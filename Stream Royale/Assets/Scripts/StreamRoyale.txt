@@ -102,3 +102,5 @@
 	2) (?)Room con un prezzo di entrata:
 		questo nel caso in cui vogliamo mettere dei premi riscattabili
 
+	3) Scelta casuale del personaggio che spotta l'avversario e che quindi ha diritto ad iniziare per primo
+

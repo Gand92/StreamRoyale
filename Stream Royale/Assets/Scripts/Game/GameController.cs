@@ -22,8 +22,8 @@ public class GameController : MonoBehaviour {
 
     private RoomManager roomManager;
     private List<Player> playerList = new List<Player>();
-    private string[] player1Name;
-    private string[] player2Name;
+    private string[] player1Name;       //It represents the name of player one for every room in the game
+    private string[] player2Name;       //Same for player number two
     private float initialTimeoutTimer;
 
     void Start() {
@@ -44,9 +44,10 @@ public class GameController : MonoBehaviour {
                     timeoutText[i].text = (Math.Floor(timeoutTimer)).ToString();
                 if (timeoutTimer <= 0f)
                 {
-                    roomManager.RoomList[i].StartFlag = true;
                     roomManager.RoomList[i].IsAvailable = false;
+                    roomManager.RoomList[i].StartFlag = true;
                 }
+                //TODO Check if is possible to move this if statament inside the one below
                 if (roomManager.RoomList[i].StartFlag)
                 {
                     Debug.Log("sono dentro");
@@ -168,6 +169,7 @@ public class GameController : MonoBehaviour {
         }
 
         //3°phase
+        //TODO Add a winnerText and fill it with the name of the winner!
         player1Name[r.RoomID] = r.PlayerList[0].Name + " is the winner";
         player2Name[r.RoomID] = "";
         yield return new WaitForSeconds(5);
